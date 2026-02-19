@@ -1,173 +1,173 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule a Tour | Unity Living and Care LLC</title>
     
-    <!-- Critical CSS Inlined for instant render -->
+    <!-- ONLY preconnect - no blocking resources -->
+    <link rel="dns-prefetch" href="https://assets.calendly.com">
+    
+    <!-- ALL CSS INLINE - Zero render blocking -->
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#0f172a;line-height:1.5}
-        nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #e2e8f0}
-        .container{max-width:80rem;margin:0 auto;padding:0 1rem}
-        .nav-wrap{display:flex;justify-content:space-between;align-items:center;height:6rem}
-        .logo-group{display:flex;align-items:center;gap:1rem}
-        .logo{height:3rem;width:auto}
-        .logo-text{font-size:1.25rem;font-weight:900;color:#1e3a8a;line-height:1}
-        .logo-sub{font-size:.625rem;font-weight:700;letter-spacing:.2em;color:#3b82f6;text-transform:uppercase;display:block}
-        .nav-links{display:none;align-items:center;gap:2rem;font-size:.875rem;font-weight:700;text-transform:uppercase}
-        .nav-links a{color:#475569;text-decoration:none;transition:color .2s}
-        .nav-links a:hover{color:#2563eb}
-        .btn{background:#2563eb;color:#fff;padding:.75rem 1.5rem;border-radius:9999px;text-decoration:none;transition:background .2s}
-        .btn:hover{background:#1d4ed8}
-        .mobile-btn{padding:.5rem;color:#475569}
-        .mobile-menu{display:none;background:#fff;border-bottom:1px solid #e2e8f0}
-        .mobile-menu.active{display:block}
-        .mobile-menu a{display:block;padding:1rem;text-align:center;font-weight:700;color:#334155;text-decoration:none}
-        main{position:relative;min-height:100vh}
-        .bg-blur{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-        .blur1{position:absolute;top:-10%;right:-10%;width:600px;height:600px;background:rgba(219,234,254,.4);border-radius:50%;filter:blur(100px)}
-        .blur2{position:absolute;bottom:-5%;left:-5%;width:500px;height:500px;background:rgba(224,242,254,.4);border-radius:50%;filter:blur(80px)}
-        .hero{position:relative;z-index:10;padding:4rem 1.5rem 3rem;text-align:center}
-        .hero h1{font-size:3rem;font-weight:900;line-height:1.1;margin-bottom:1.5rem}
-        .gradient{background:linear-gradient(to right,#2563eb,#0ea5e9);-webkit-background-clip:text;background-clip:text;color:transparent}
-        .hero p{color:#64748b;font-size:1.125rem;max-width:42rem;margin:0 auto}
-        .content{position:relative;z-index:10;padding:0 1rem 6rem}
-        .grid{display:grid;gap:2rem;max-width:72rem;margin:0 auto}
-        .card{background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(12px);border-radius:2.5rem;padding:2rem}
-        .card h3{font-size:1.25rem;font-weight:700;margin-bottom:1rem}
-        .details li{display:flex;gap:1rem;margin-bottom:1rem}
-        .icon-wrap{width:2.5rem;height:2.5rem;background:#eff6ff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2563eb;flex-shrink:0}
-        .cta-card{background:#2563eb;color:#fff;border-radius:2.5rem;padding:2rem;box-shadow:0 20px 25px -5px rgba(37,99,235,.1)}
-        .cta-card h3{margin-bottom:.5rem}
-        .cta-card p{color:#bfdbfe;font-size:.875rem;margin-bottom:1.5rem}
-        .cta-card a{color:#fff;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}
-        #cal-wrapper{min-height:600px;position:relative}
-        #cal-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#94a3b8;text-align:center}
-        .spinner{width:40px;height:40px;border:3px solid #e2e8f0;border-top-color:#2563eb;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
-        @keyframes spin{to{transform:rotate(360deg)}}
-        footer{background:#020617;color:#94a3b8;padding:5rem 1.5rem 2.5rem}
-        footer .container{max-width:80rem}
-        footer h4{color:#fff;font-size:.875rem;text-transform:uppercase;margin-bottom:1rem}
-        footer a{color:#94a3b8;text-decoration:none;transition:color .2s}
-        footer a:hover{color:#60a5fa}
+        body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.5;-webkit-font-smoothing:antialiased}
+        nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.98);border-bottom:1px solid #e2e8f0}
+        .c{max-width:80rem;margin:0 auto;padding:0 1rem}
+        .nw{display:flex;justify-content:space-between;align-items:center;height:5.5rem}
+        .lg{display:flex;align-items:center;gap:.75rem}
+        .li{height:3rem;width:auto}
+        .lt{font-size:1.125rem;font-weight:900;color:#1e3a8a;line-height:1}
+        .ls{font-size:.5rem;font-weight:700;letter-spacing:.25em;color:#3b82f6;text-transform:uppercase;display:block}
+        .nl{display:none;align-items:center;gap:1.5rem;font-size:.8rem;font-weight:700;text-transform:uppercase}
+        .nl a{color:#475569;text-decoration:none;transition:color .15s}
+        .nl a:hover{color:#2563eb}
+        .bt{background:#2563eb;color:#fff;padding:.65rem 1.35rem;border-radius:50px;text-decoration:none;transition:all .15s;display:inline-block}
+        .bt:hover{background:#1d4ed8;transform:translateY(-1px)}
+        .mb{padding:.4rem;color:#475569;background:0;border:0;cursor:pointer}
+        .mm{display:none;background:#fff;border-bottom:1px solid #e2e8f0}
+        .mm.on{display:block}
+        .mm a{display:block;padding:.9rem;text-align:center;font-weight:700;color:#334155;text-decoration:none;font-size:.9rem}
+        main{position:relative;min-h:100vh}
+        .bb{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.6}
+        .b1{position:absolute;top:-10%;right:-10%;width:600px;height:600px;background:#dbeafe;border-radius:50%;filter:blur(120px)}
+        .b2{position:absolute;bottom:-5%;left:-5%;width:500px;height:500px;background:#e0f2fe;border-radius:50%;filter:blur(100px)}
+        .he{position:relative;z-index:10;padding:3.5rem 1.5rem 2.5rem;text-align:center}
+        .he h1{font-size:2.75rem;font-weight:900;line-height:1.05;margin-bottom:1.25rem;letter-spacing:-.02em}
+        .gr{background:linear-gradient(135deg,#2563eb 0%,#0ea5e9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .he p{color:#64748b;font-size:1.05rem;max-width:40rem;margin:0 auto;line-height:1.6}
+        .co{position:relative;z-index:10;padding:0 1rem 5rem}
+        .gd{display:grid;gap:1.75rem;max-width:72rem;margin:0 auto}
+        .cd{background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:2rem;padding:1.75rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+        .cd h3{font-size:1.15rem;font-weight:700;margin-bottom:.9rem;color:#0f172a}
+        .dl{list-style:none}
+        .dl li{display:flex;gap:.9rem;margin-bottom:.9rem}
+        .ic{width:2.25rem;height:2.25rem;background:#eff6ff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2563eb;flex-shrink:0}
+        .cc{background:#2563eb;color:#fff;border-radius:2rem;padding:1.75rem;box-shadow:0 8px 20px rgba(37,99,235,.15)}
+        .cc h3{margin-bottom:.4rem;font-size:1.15rem}
+        .cc p{color:#bfdbfe;font-size:.8rem;margin-bottom:1.25rem;line-height:1.5}
+        .cc a{color:#fff;font-weight:700;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;transition:gap .2s}
+        .cc a:hover{gap:.7rem}
+        .cw{min-height:580px;position:relative;overflow:hidden;border-radius:1.5rem}
+        .cl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(248,250,252,.8);backdrop-filter:blur(8px);z-index:5}
+        .sp{width:36px;height:36px;border:3px solid #e2e8f0;border-top-color:#2563eb;border-radius:50%;animation:s 1s linear infinite;margin:0 auto .8rem}
+        @keyframes s{to{transform:rotate(360deg)}}
+        .calendly-inline-widget{position:relative;z-index:1;border-radius:1.5rem;overflow:hidden}
+        .ft{background:#020617;color:#94a3b8;padding:4.5rem 1.5rem 2.25rem}
+        .ft h4{color:#fff;font-size:.8rem;text-transform:uppercase;margin-bottom:.9rem;font-weight:700;letter-spacing:.05em}
+        .ft a{color:#94a3b8;text-decoration:none;transition:color .15s}
+        .ft a:hover{color:#60a5fa}
+        .fg{display:grid;gap:2.5rem;margin-bottom:3.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+        .fl{display:flex;flex-direction:column;gap:.45rem;font-size:.85rem}
         @media(min-width:768px){
-            .logo{height:4rem}
-            .nav-links{display:flex}
-            .mobile-btn{display:none}
-            .hero h1{font-size:4.5rem}
-            .grid{grid-template-columns:repeat(12,1fr)}
-            .sidebar{grid-column:span 4;order:1}
-            .main-col{grid-column:span 8;order:2}
+            .li{height:3.5rem}
+            .nl{display:flex}
+            .mb{display:none}
+            .he h1{font-size:4rem}
+            .gd{grid-template-columns:repeat(12,1fr)}
+            .sd{grid-column:span 4}
+            .mc{grid-column:span 8}
+        }
+        @media(min-width:1024px){
+            .he h1{font-size:4.5rem}
         }
     </style>
-    
-    <!-- Preconnect to speed up external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://assets.calendly.com">
-    
-    <!-- Load font after page renders -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
 
     <nav>
-        <div class="container">
-            <div class="nav-wrap">
-                <div class="logo-group">
-                    <img src="images/ulogo.webp" alt="Unity Living Logo" class="logo" width="64" height="64">
+        <div class="c">
+            <div class="nw">
+                <div class="lg">
+                    <img src="images/ulogo.webp" alt="Unity Living Logo" class="li" width="56" height="56">
                     <div>
-                        <span class="logo-text">Unity Living</span>
-                        <span class="logo-sub">& Care LLC</span>
+                        <span class="lt">Unity Living</span>
+                        <span class="ls">& Care LLC</span>
                     </div>
                 </div>
                 
-                <div class="nav-links">
+                <div class="nl">
                     <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="services.html">Services</a>
                     <a href="amenities.html">Amenities</a>
-                    <a href="tel:6512000378" class="btn">Call Us</a>
+                    <a href="tel:6512000378" class="bt">Call Us</a>
                 </div>
 
-                <button class="mobile-btn" id="menu-btn" aria-label="Menu">
-                    <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <button class="mb" id="m" aria-label="Menu">
+                    <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"/></svg>
                 </button>
             </div>
         </div>
-        <div class="mobile-menu" id="menu">
+        <div class="mm" id="n">
             <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
             <a href="amenities.html">Amenities</a>
             <a href="services.html">Services</a>
-            <div style="padding:1rem">
-                <a href="tel:6512000378" class="btn" style="display:block;text-align:center">Call Us Now</a>
+            <div style="padding:.85rem">
+                <a href="tel:6512000378" class="bt" style="display:block;text-align:center;width:100%">Call Us Now</a>
             </div>
         </div>
     </nav>
 
     <main>
-        <div class="bg-blur">
-            <div class="blur1"></div>
-            <div class="blur2"></div>
+        <div class="bb">
+            <div class="b1"></div>
+            <div class="b2"></div>
         </div>
 
-        <section class="hero">
-            <div style="max-width:56rem;margin:0 auto">
-                <h1>See Your Future <br/><span class="gradient">Home in Person.</span></h1>
+        <section class="he">
+            <div style="max-width:54rem;margin:0 auto">
+                <h1>See Your Future <br><span class="gr">Home in Person.</span></h1>
                 <p>Schedule a private tour of our Brooklyn Center facility. Meet our clinical team and explore our high-acuity residential suites.</p>
             </div>
         </section>
 
-        <section class="content">
-            <div class="grid">
+        <section class="co">
+            <div class="gd">
                 
-                <div class="sidebar">
-                    <div class="card" style="margin-bottom:1.5rem">
+                <div class="sd">
+                    <div class="cd" style="margin-bottom:1.5rem">
                         <h3>Tour Details</h3>
-                        <ul class="details" style="list-style:none">
+                        <ul class="dl">
                             <li>
-                                <div class="icon-wrap">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <div class="ic">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
                                 <div>
-                                    <p style="font-weight:700;color:#1e293b">Duration</p>
-                                    <p style="font-size:.875rem;color:#64748b">Approx. 45 - 60 minutes</p>
+                                    <p style="font-weight:700;color:#1e293b;font-size:.95rem">Duration</p>
+                                    <p style="font-size:.8rem;color:#64748b">Approx. 45 - 60 minutes</p>
                                 </div>
                             </li>
                             <li>
-                                <div class="icon-wrap">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                <div class="ic">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                                 </div>
                                 <div>
-                                    <p style="font-weight:700;color:#1e293b">Location</p>
-                                    <p style="font-size:.875rem;color:#64748b">4512 63rd Ave N, Minneapolis, MN 55429</p>
+                                    <p style="font-weight:700;color:#1e293b;font-size:.95rem">Location</p>
+                                    <p style="font-size:.8rem;color:#64748b">4512 63rd Ave N, Minneapolis, MN 55429</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="cta-card">
+                    <div class="cc">
                         <h3>Can't make it?</h3>
                         <p>We offer virtual tours via Zoom or FaceTime for families who are currently out of state.</p>
-                        <a href="tel:6512000378">Request Virtual Tour <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+                        <a href="tel:6512000378">Request Virtual Tour <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
                     </div>
                 </div>
 
-                <div class="main-col">
-                    <div class="card">
-                        <div id="cal-wrapper">
-                            <div id="cal-loading">
-                                <div class="spinner"></div>
-                                Loading Calendar...
+                <div class="mc">
+                    <div class="cd">
+                        <div class="cw">
+                            <div class="cl" id="l">
+                                <div style="text-align:center;color:#64748b;font-weight:500;font-size:.9rem">
+                                    <div class="sp"></div>
+                                    Loading Calendar...
+                                </div>
                             </div>
-                            <div class="calendly-inline-widget" 
-                                 data-url="https://calendly.com/saidhaille/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=2563eb" 
-                                 style="min-width:320px;height:600px;width:100%">
-                            </div>
+                            <div class="calendly-inline-widget" data-url="https://calendly.com/saidhaille/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=2563eb" style="width:100%;height:580px"></div>
                         </div>
                     </div>
                 </div>
@@ -175,23 +175,23 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div style="display:grid;gap:3rem;margin-bottom:4rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+    <footer class="ft">
+        <div class="c">
+            <div class="fg">
                 <div>
-                    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem">
-                        <img src="images/ulogo.webp" alt="Logo" style="height:2.5rem;width:auto;filter:brightness(0)invert(1)" width="40" height="40" loading="lazy">
+                    <div style="display:flex;align-items:center;gap:.65rem;margin-bottom:1.35rem">
+                        <img src="images/ulogo.webp" alt="Logo" style="height:2.25rem;width:auto;filter:brightness(0)invert(1)" width="36" height="36" loading="lazy">
                         <div>
-                            <span style="display:block;font-size:1.25rem;font-weight:900;color:#fff;text-transform:uppercase">Unity Living</span>
-                            <span style="font-size:.625rem;font-weight:700;letter-spacing:.3em;color:#60a5fa;text-transform:uppercase">& Care LLC</span>
+                            <span style="display:block;font-size:1.125rem;font-weight:900;color:#fff;text-transform:uppercase;line-height:1">Unity Living</span>
+                            <span style="font-size:.5rem;font-weight:700;letter-spacing:.3em;color:#60a5fa;text-transform:uppercase">& Care LLC</span>
                         </div>
                     </div>
-                    <p style="max-width:20rem">4512 63rd Ave N, Brooklyn Center, MN 55429</p>
+                    <p style="max-width:18rem;font-size:.85rem">4512 63rd Ave N, Brooklyn Center, MN 55429</p>
                 </div>
 
                 <div>
                     <h4>Quick Links</h4>
-                    <div style="display:flex;flex-direction:column;gap:.5rem">
+                    <div class="fl">
                         <a href="index.html">Home</a>
                         <a href="about.html">About</a>
                         <a href="services.html">Services</a>
@@ -201,35 +201,24 @@
                 
                 <div>
                     <h4>Contact</h4>
-                    <p style="font-weight:700;margin-bottom:.5rem">(651) 200-0378</p>
-                    <p style="font-size:.875rem">unitylivingandcare@gmail.com</p>
+                    <p style="font-weight:700;margin-bottom:.45rem;font-size:.9rem">(651) 200-0378</p>
+                    <p style="font-size:.8rem">unitylivingandcare@gmail.com</p>
                 </div>
             </div>
-            <div style="padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center">
-                <p style="font-size:.625rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;font-weight:700">© 2026 Unity Living and Care LLC.</p>
+            <div style="padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.05);text-align:center">
+                <p style="font-size:.55rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;font-weight:700">© 2026 Unity Living and Care LLC.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Load Calendly widget script -->
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    
+    <!-- Inline critical JS - No external blocking -->
     <script>
-        // Mobile menu toggle
-        document.getElementById('menu-btn').onclick=()=>document.getElementById('menu').classList.toggle('active');
-        
-        // Hide loading spinner once Calendly loads
-        function checkCalendlyLoaded() {
-            const iframe = document.querySelector('.calendly-inline-widget iframe');
-            if (iframe) {
-                document.getElementById('cal-loading').style.display = 'none';
-            } else {
-                setTimeout(checkCalendlyLoaded, 100);
-            }
-        }
-        
-        // Start checking after a short delay
-        setTimeout(checkCalendlyLoaded, 500);
+        document.getElementById('m').onclick=function(){document.getElementById('n').classList.toggle('on')};
+        var s=document.createElement('script');
+        s.src='https://assets.calendly.com/assets/external/widget.js';
+        s.async=1;
+        s.onload=function(){setTimeout(function(){var i=document.querySelector('.calendly-inline-widget iframe');if(i)document.getElementById('l').style.display='none'},800)};
+        document.head.appendChild(s);
     </script>
 </body>
 </html>
