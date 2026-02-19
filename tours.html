@@ -3,155 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule a Tour | Unity Living and Care LLC</title>
+    <title>Schedule a Tour | Unity Living</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://assets.calendly.com">
 
     <style>
-        :root { --blue-main: #2563eb; --blue-dark: #1e3a8a; --slate-soft: #f8fafc; }
+        /* 2. Critical CSS: Only what's needed for the first "paint" */
+        :root { --blue-main: #2563eb; --blue-dark: #1e3a8a; }
         body { 
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; 
-            margin: 0; background: var(--slate-soft); color: #0f172a; overflow-x: hidden;
-            text-rendering: optimizeLegibility;
+            font-family: system-ui, -apple-system, sans-serif; /* Start with system fonts immediately */
+            margin: 0; background: #f8fafc; color: #0f172a; 
         }
-        .nav-blur { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 2rem; }
-        
-        /* Hardware Accelerated Orbs */
-        .orb { position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; pointer-events: none; transform: translate3d(0,0,0); will-change: transform; }
-        .orb-1 { top: -10%; right: -10%; width: 500px; height: 500px; background: rgba(37, 99, 235, 0.1); }
-        .orb-2 { bottom: -10%; left: -10%; width: 400px; height: 400px; background: rgba(14, 165, 233, 0.1); }
-
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .btn { padding: 12px 28px; border-radius: 99px; font-weight: 800; text-decoration: none; transition: 0.2s; cursor: pointer; display: inline-block; border: none; }
-        .btn-blue { background: var(--blue-main); color: white; }
-        .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); }
+        .nav-blur { background: #fff; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; height: 80px; }
+        .btn-blue { background: var(--blue-main); color: white; padding: 12px 28px; border-radius: 99px; text-decoration: none; font-weight: 800; }
+        
+        /* Disable orbs on slow connections/low power */
+        @media (prefers-reduced-motion: no-preference) {
+            .orb { position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; pointer-events: none; opacity: 0.5; }
+            .orb-1 { top: -10%; right: -10%; width: 400px; height: 400px; background: rgba(37, 99, 235, 0.1); }
+        }
 
-        #calendar-skeleton { height: 600px; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 2rem; }
-        .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--blue-main); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        #calendar-target { min-height: 600px; background: white; border-radius: 2rem; border: 1px solid #e2e8f0; margin-top: 20px; }
     </style>
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&display=swap" media="print" onload="this.media='all'">
 </head>
 
 <body>
     <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
 
     <nav class="nav-blur">
-        <div class="container" style="height: 80px; display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
             <div style="display: flex; align-items: center; gap: 12px;">
-                <img src="images/ulogo.webp" alt="Unity Living" width="48" height="48" style="object-fit: contain;" fetchpriority="high">
-                <div>
-                    <div style="font-weight: 900; color: var(--blue-dark); font-size: 1.2rem; line-height: 1;">UNITY LIVING</div>
-                    <div style="font-size: 10px; font-weight: 800; color: var(--blue-main); letter-spacing: 2px;">& CARE LLC</div>
-                </div>
+                <img src="images/ulogo.webp" alt="Unity Living" width="48" height="48" loading="eager" fetchpriority="high">
+                <div style="font-weight: 900; color: var(--blue-dark);">UNITY LIVING</div>
             </div>
-            <a href="tel:6512000378" class="btn btn-blue" style="font-size: 14px;">CALL NOW</a>
+            <a href="tel:6512000378" class="btn-blue">CALL NOW</a>
         </div>
     </nav>
 
-    <main class="container" style="padding-top: 60px; padding-bottom: 100px;">
-        <header style="text-align: center; margin-bottom: 60px;">
-            <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; margin: 0; line-height: 1.1;">
-                See Your Future <br><span style="color: var(--blue-main);">Home in Person.</span>
-            </h1>
-            <p style="color: #64748b; font-size: 1.2rem; max-width: 600px; margin: 20px auto;">
-                Schedule a private tour of our Brooklyn Center facility. Explore our high-acuity residential suites.
-            </p>
-        </header>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: start;">
-            
-            <div style="display: flex; flex-direction: column; gap: 24px;">
-                <div class="glass" style="padding: 32px;">
-                    <h3 style="margin-top: 0; font-size: 1.4rem;">Tour Details</h3>
-                    <div style="margin-bottom: 16px;">
-                        <div style="font-weight: 800; font-size: 14px; color: #64748b; text-transform: uppercase;">Duration</div>
-                        <div style="font-weight: 600;">45 - 60 Minutes</div>
-                    </div>
-                    <div>
-                        <div style="font-weight: 800; font-size: 14px; color: #64748b; text-transform: uppercase;">Location</div>
-                        <div style="font-weight: 600;">4512 63rd Ave N, Minneapolis, MN</div>
-                    </div>
-                </div>
-
-                <div style="background: var(--blue-main); color: white; padding: 32px; border-radius: 2rem; box-shadow: 0 20px 25px -5px rgba(37,99,235,0.2);">
-                    <h3 style="margin-top: 0;">Virtual Tour?</h3>
-                    <p style="opacity: 0.9; font-size: 15px;">Can't make it in person? Request a tour via Zoom or FaceTime.</p>
-                    <a href="tel:6512000378" style="color: white; font-weight: 800; text-decoration: underline;">Request Virtual Tour →</a>
-                </div>
-            </div>
-
-            <div id="calendar-target" class="glass" style="min-height: 600px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);">
-                <div id="calendar-skeleton">
-                    <div class="spinner"></div>
-                    <p style="margin-top: 20px; color: #64748b; font-weight: 600;">Opening Scheduler...</p>
-                </div>
+    <main class="container" style="padding: 40px 0;">
+        <h1 style="text-align: center; font-size: 2.5rem;">Schedule Your Tour</h1>
+        
+        <div id="calendar-target">
+            <div id="load-trigger" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 600px; text-align: center; padding: 20px;">
+                <p>Ready to book? Click below to load our real-time calendar.</p>
+                <button onclick="activateCalendar()" class="btn-blue" style="cursor: pointer; border: none;">View Calendar</button>
             </div>
         </div>
     </main>
 
-    <footer style="background: #020617; color: white; padding: 80px 0 40px;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; margin-bottom: 60px;">
-                <div>
-                    <div style="font-weight: 900; font-size: 1.5rem; margin-bottom: 8px;">UNITY LIVING</div>
-                    <div style="font-size: 11px; font-weight: 800; color: #38bdf8; letter-spacing: 3px; margin-bottom: 20px;">& CARE LLC</div>
-                    <p style="color: #94a3b8; font-size: 14px; line-height: 1.6;">Providing high-acuity care and residential support.</p>
-                </div>
-                <div>
-                    <h4 style="text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin-bottom: 24px;">Links</h4>
-                    <nav style="display: flex; flex-direction: column; gap: 12px; font-size: 14px;">
-                        <a href="index.html" style="color: #94a3b8; text-decoration: none;">Home</a>
-                        <a href="about.html" style="color: #94a3b8; text-decoration: none;">About</a>
-                        <a href="services.html" style="color: #94a3b8; text-decoration: none;">Services</a>
-                    </nav>
-                </div>
-                <div>
-                    <h4 style="text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin-bottom: 24px;">Contact</h4>
-                    <p style="color: #94a3b8; font-size: 14px; margin: 0;">(651) 200-0378</p>
-                    <p style="color: #94a3b8; font-size: 14px;">admin@unitylivingmn.com</p>
-                </div>
-            </div>
-            <div style="border-top: 1px solid #1e293b; padding-top: 40px; text-align: center; color: #475569; font-size: 12px;">
-                © 2026 Unity Living and Care LLC. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
     <script>
-        /**
-         * Smart Load Function: Only loads the heavy Calendly script 
-         * when the user is actually looking at the calendar section.
-         */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    loadCalendly();
-                    observer.disconnect(); // Stop watching after it starts loading
-                }
-            });
-        }, { rootMargin: '100px' }); // Start loading 100px before it enters the screen
-
-        observer.observe(document.getElementById('calendar-target'));
-
-        function loadCalendly() {
+        // 6. Manual activation prevents the Calendly script from slowing down the rest of the page
+        function activateCalendar() {
             const target = document.getElementById('calendar-target');
-            const skeleton = document.getElementById('calendar-skeleton');
+            target.innerHTML = '<div class="calendly-inline-widget" data-url="https://calendly.com/saidhaille/30min" style="min-width:320px;height:600px;"></div>';
             
-            const calDiv = document.createElement('div');
-            calDiv.className = 'calendly-inline-widget';
-            calDiv.style.width = '100%';
-            calDiv.style.height = '600px';
-            calDiv.dataset.url = "https://calendly.com/saidhaille/30min?hide_landing_page_details=1&primary_color=2563eb";
-            
-            skeleton.remove();
-            target.appendChild(calDiv);
-
             const script = document.createElement('script');
             script.src = "https://assets.calendly.com/assets/external/widget.js";
             script.async = true;
